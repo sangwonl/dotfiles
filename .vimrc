@@ -8,9 +8,15 @@ Plug 'itchyny/lightline.vim'
 " languages
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'majutsushi/tagbar'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" editor
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'dyng/ctrlsf.vim'
+Plug 'rhysd/git-messenger.vim'
+Plug 'preservim/nerdcommenter'
 
 " color schemes
 " Plug 'morhetz/gruvbox'
@@ -36,22 +42,34 @@ set autoindent
 let g:seoul256_background = 100
 color seoul256
 
-" aliases
-nnoremap <C-m> :NERDTreeFind<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-t> :TagbarToggle<CR>
-nnoremap <C-l> :CocAction<CR>
-nnoremap <C-f> :FZF<CR>
+" save
 nnoremap <C-s> :w<CR>
-nnoremap <C-e> :q<CR>
 nnoremap <S-C-s> :wa<CR>
 
-" coc - navs
+" git
+nnoremap <C-b> :GitMessenger<CR>
+
+" search
+nnoremap <C-f> :FZF<CR>
+nnoremap <C-g> :CtrlSF 
+
+" nerdtree
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-m> :NERDTreeFind<CR>
+
+" nerdcommenter
+let g:NERDSpaceDelims = 1
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+
+" coc or tags
 nmap gd <Plug>(coc-definition)
 nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references) 
 nmap <leader>rn <Plug>(coc-rename)
+nnoremap <C-l> :CocAction<CR>
+nnoremap <C-y> :TagbarToggle<CR>
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
